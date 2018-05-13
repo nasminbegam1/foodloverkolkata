@@ -1,0 +1,91 @@
+<%- include ./includes/header_script %>
+<body>
+<!-- Top -->
+<div id="top">
+  <div class="shell">
+    <%- include ./includes/header %>
+    <%- include ./includes/slider %>
+  </div>
+</div>
+<!-- Top -->
+<!-- Main -->
+<div id="main">
+  <div class="shell">
+    <!-- Search, etc -->
+    <div class="options">
+      <div class="search">
+        <form action="#" method="post">
+          <span class="field">
+          <input type="text" class="blink" value="SEARCH" title="SEARCH" />
+          </span>
+          <input type="text" class="search-submit" value="GO" />
+        </form>
+      </div>
+      <span class="left"><a href="#">Advanced Search</a></span>
+      <div class="right"> <span class="cart"> <a href="#" class="cart-ico">&nbsp;</a> <strong>$0.00</strong> </span> <span class="left more-links"> <a href="#">Checkout</a> <a href="#">Details</a> </span> </div>
+    </div>
+    <!-- End Search, etc -->
+    <!-- Content -->
+    <div id="content">
+      <!-- Tabs -->
+      <div class="tabs">
+        <ul>
+            <% if( category.length > 0 ){ %>
+                <% category.forEach(function(data, index) { %>
+                <li><a href="javascript:void(0);" <% if( index.length == 0 ){ %> class="active" <% } %>><span><%= data.name %></span></a></li>
+                <% }); %>
+            <% } %>
+        </ul>
+      </div>
+      <!-- Tabs -->
+      <!-- Container -->
+      <div id="container">
+        <div class="tabbed">
+          <!-- First Tab Content -->
+          
+          
+          <% if( category.length > 0 ){ %>
+                <% category.forEach(function(data, index) { %>
+                    <div class="tab-content" <% if( index.length == 0 ){ %> style="display:block;" <% } %>>
+                      <div class="items">
+                        <div class="cl">&nbsp;</div>
+                        <ul>
+                            <% if( product.length > 0 ){ %>
+                                <% product.forEach(function(prod, index) { %>
+                                    <% if( prod.category_id == data.id ){ %>
+                                        <li>
+                                            <div class="image">
+                                                <a href="/details/<%= data.id %>">
+                                                    <img src="/uploads/thumb/<%= prod.image %>" alt="<%= prod.image %>" height="100" width="100">
+                                                </a>
+                                            </div>
+                                            <p> Item : <span><%= prod.name %></span><br />
+                                              Quantity : <span><%= prod.quantity %></span><br /> </p>
+                                            <p class="price">Wholesale Price: <strong>Rs. <%= prod.price %></strong></p>
+                                        </li>
+                                    <% } %>
+                                <% }); %>
+                            <% } %>
+                        </ul>
+                        <div class="cl">&nbsp;</div>
+                      </div>
+                    </div>
+                <% }); %>
+          <% } %>
+        </div>
+        <!-- Brands -->
+        <div class="brands">
+          <h3>Brands</h3>
+          <div class="logos"> <a href="#"><img src="css/images/logo1.gif" alt="" /></a> <a href="#"><img src="css/images/logo2.gif" alt="" /></a> <a href="#"><img src="css/images/logo3.gif" alt="" /></a> <a href="#"><img src="css/images/logo4.gif" alt="" /></a> <a href="#"><img src="css/images/logo5.gif" alt="" /></a> </div>
+        </div>
+        <!-- End Brands -->
+        <%- include ./includes/footer %>
+      </div>
+      <!-- End Container -->
+    </div>
+    <!-- End Content -->
+  </div>
+</div>
+<!-- End Main -->
+</body>
+</html>

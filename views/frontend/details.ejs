@@ -1,0 +1,70 @@
+<%- include ./includes/header_script %>
+<style>
+  .itemcount{
+    float: left;
+    text-align: right;
+    font-size: 20px;
+    line-height: 36px;
+    padding: 0 7px 0 5px;
+  }
+</style>
+<body>
+<!-- Top -->
+<div id="top">
+  <div class="shell">
+    <%- include ./includes/header %>
+    <%- include ./includes/slider %>
+  </div>
+</div>
+<!-- Top -->
+<!-- Main -->
+<div id="main">
+  <div class="shell">
+    <!-- Search, etc -->
+    <div class="options">
+      <div class="right">
+        <% if( cartItem.length > 0 ){ %>
+        <span class="itemcount"><%= cartItem.length %></span>
+        <% } %>
+        <span class="cart">
+          <a href="#" class="cart-ico">&nbsp;</a>
+          <strong>$0.00</strong>
+        </span>
+        <span class="left more-links">
+          <a href="#">Checkout</a>
+          <a href="#">Details</a>
+        </span>
+      </div>
+    </div>
+    <!-- End Search, etc -->
+    <!-- Content -->
+    <div id="content">
+      <!-- Container -->
+      <div id="container">
+        <div>
+          
+            <div class="items">
+              <div class="cl">&nbsp;</div>
+              <ul>
+                  <li>
+                      <div><img src="/uploads/thumb/<%= product.image %>" alt="<%= product.image %>"></div>
+                      <p> Item : <span><%= product.name %></span><br />
+                        Quantity : <span><%= product.quantity %></span><br /> </p>
+                      <p class="price">Wholesale Price: <strong>Rs. <%= product.price %></strong></p>
+                      <a href="/addtocart/<%= product.id %>"><button type="button" class="btn btn-default btn-sm">Add to cart</button></a>
+                  </li>
+              </ul>
+              <div class="cl">&nbsp;</div>
+            </div>
+                    
+        </div>
+        <%- include ./includes/footer %>
+      </div>
+      <!-- End Container -->
+    </div>
+    <!-- End Content -->
+  </div>
+</div>
+<!-- End Main -->
+</body>
+</html>
